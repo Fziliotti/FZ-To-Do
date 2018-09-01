@@ -8,14 +8,14 @@ function renderTodos(){
 	listElement.innerHTML = ''; //limpa a lista antes de renderizar
 	for (todo of todos){
 		var todoElement = document.createElement('li');
-		todoElement.setAttribute('class', "display-4 my-4")
+		todoElement.setAttribute('class', "text-24 my-4")
 		var todoText = document.createTextNode(todo);
 
 		var linkElement = document.createElement('a');
 		linkElement.setAttribute('href', '#');
-		linkElement.setAttribute('class', 'btn btn-lg btn-danger ml-2')
+		linkElement.setAttribute('class', 'btn btn-danger ml-2')
 
-		var linkText = document.createTextNode('DELETAR');
+		var linkText = document.createTextNode('DEL');
 		var pos = todos.indexOf(todo);
 		linkElement.setAttribute('onclick', 'deleteTodo('+ pos+')');
 
