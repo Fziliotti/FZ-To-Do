@@ -5,7 +5,7 @@ body{
 }
 
 .todo-item{
-  font-size: 2rem;
+  font-size: 1.6rem;
   display: flex;
   align-content: center;
   color:#fff;
@@ -16,18 +16,16 @@ h1,label{
 }
 
 .lblCadastrar{
-  font-size: 2rem;
+  font-size: 1.6rem;
 }
-.btnPLUS{
- 
-}
+
 
 .btnPLUS-text{
   font-size: 2rem;
   font-weight: 600;
 }
 
-.btn-danger > {
+.btn-danger {
   background-color: rgb(243, 2, 2)
 }
 
@@ -35,6 +33,3 @@ h1,label{
   background-color: #1F7A8C;
 }
 
-.bg-body{
-
-}

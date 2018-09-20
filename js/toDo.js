@@ -49,7 +49,7 @@ function addTodo(){
 			type: 'error',
 			title: 'Digite alguma coisa no campo de texto',
 			showConfirmButton: false,
-			timer: 1500
+			timer: 1000
 		  })
 		  todoText.focus();
 	}
@@ -73,18 +73,18 @@ function deleteTodo(pos){
 	  })
 	  
 	  swalWithBootstrapButtons({
-		title: 'Are you sure?',
-		text: "You won't be able to revert this!",
+		title: 'Tem certeza disso?',
+		text: "Não poderá ser revertido depois!",
 		type: 'warning',
 		showCancelButton: true,
-		confirmButtonText: 'Yes, delete it!',
-		cancelButtonText: 'No, cancel!',
+		confirmButtonText: 'Simm',
+		cancelButtonText: 'Cancelar',
 		reverseButtons: true
 	  }).then((result) => {
 		if (result.value) {
 		  swalWithBootstrapButtons(
-			'Deleted!',
-			'Your file has been deleted.',
+			'Deletado!',
+			'Sua tarefa já era!',
 			'success'
 		  )
 		  todos.splice(pos,1);
@@ -96,8 +96,8 @@ function deleteTodo(pos){
 		  result.dismiss === swal.DismissReason.cancel
 		) {
 		  swalWithBootstrapButtons(
-			'Cancelled',
-			'Your imaginary file is safe :)',
+			'Cancelado',
+			'Sua tarefa tá sussa! :)',
 			'error'
 		  )
 		}
