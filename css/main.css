@@ -1,12 +1,40 @@
 body{
-  background-color: #333;
-  color: white;
+  background-color: #022B3A;
+  font-family: 'Ubuntu Condensed', sans-serif;
   
 }
 
-text-24{
-	font-size: 24px;
+.todo-item{
+  font-size: 2rem;
+  display: flex;
+  align-content: center;
+  color:#fff;
 }
 
+h1,label{
+  color:#E1E5F2;
+}
 
+.lblCadastrar{
+  font-size: 2rem;
+}
+.btnPLUS{
+ 
+}
 
+.btnPLUS-text{
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.btn-danger > {
+  background-color: rgb(243, 2, 2)
+}
+
+.bg-menu{
+  background-color: #1F7A8C;
+}
+
+.bg-body{
+
+}

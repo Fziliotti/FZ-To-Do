@@ -7,48 +7,61 @@
 	<meta name="description" content="App Lista de afazeres usando Javascript Puro - Fziliotti">
     <!-- Add to homescreen for Chrome on Android -->
     <meta name="mobile-web-app-capable" content="yes">
-    <link rel="icon" sizes="192x192" href="imgs/launcher-icon-4x.png">
+    <link rel="icon" sizes="192x192" href="imgs/launcher-icon-2x.png">
     <meta name="theme-color" content="#0f1419">
     <link rel="manifest" href="manifest.json">
 	<!-- Favicon -->
     <link rel="shortcut icon" href="imgs/favicon.ico" type="image/x-icon" />
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu+Condensed" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@7.26.29/dist/sweetalert2.min.css">
 	<link rel="stylesheet" href="css/main.css">
 
 </head>
 <body>
-	<div class="header bg-dark text-light py-4 mb-4">
-		<h1 class="text-center display-3">Lista de Tarefas PWA</h1>
+	<div class="header bg-menu text-light py-4 mb-4">
+		<h1 class="text-center">Lista de Tarefas - JSPURO</h1>
 	</div>
 	<div class="container">
 		
 		<div id="app">
-			<label for="novaTarefa">Cadastre uma nova tarefa:</label>
+			<label class="lblCadastrar" for="novaTarefa">Cadastre uma nova tarefa:</label>
 			<div class="input-group mb-3">
-				<input id="novaTarefa" type="text" maxlength="25" class="form-control" placeholder="Cadastra alguma tarefa aê =)">
+				<input id="novaTarefa" type="text" maxlength="40" class="form-control" placeholder="Cadastra alguma tarefa aê =)">
 				<div class="input-group-append">
-					<button class="btn btn-success btn-lg" type="submit">ADD</button> 
+					<button class="btnPLUS btn btn-success btn-lg" type="submit"><span class="btnPLUS-text">+</span></button> 
 				</div>
 			</div>
 			
-			<ul class="my-4">
+			<ul class="my-4 list-group">
 				
 			</ul>
 		</div>
 
 	</div>
+
+	<footer class="footer">
+		<div class="container">
+		  <span class="text-muted">Desenvolvido por Fabrício Ziliotti.<br> Nenhum direito reservado =)</span>
+		</div>
+	  </footer>
+
 	
+	<!-- <div class="btnTheme"></div>
 
 
 
-
-
+ -->
 
 
 
 
 
 	<script src="js/toDo.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.26.29/dist/sweetalert2.all.min.js"></script>
+	<!-- Optional: include a polyfill for ES6 Promises for IE11 and Android browser -->
+	<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
 </body>
+
 </html>

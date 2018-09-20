@@ -9,14 +9,14 @@ function renderTodos(){
 	listElement.innerHTML = ''; //limpa a lista antes de renderizar
 	for (todo of todos){
 		var todoElement = document.createElement('li');
-		todoElement.setAttribute('class', "text-24 my-4")
+		todoElement.setAttribute('class', "todo-item my-4 list-group-item bg-info d-flex justify-content-between")
 		var todoText = document.createTextNode(todo);
 
-		var linkElement = document.createElement('a');
-		linkElement.setAttribute('href', '#');
-		linkElement.setAttribute('class', 'btn btn-danger ml-2')
+		var linkElement = document.createElement('button');
+		linkElement.setAttribute('class', 'btn btn-danger ml-2 float-right')
 
 		var linkText = document.createTextNode('DEL');
+		
 		var pos = todos.indexOf(todo);
 		linkElement.setAttribute('onclick', 'deleteTodo('+ pos+')');
 
@@ -32,12 +32,26 @@ renderTodos(); // RENDERIZAR PELOMENOS UMA VEZ
 function addTodo(){
 	var todoText = inputElement.value;
 	if (todoText){
+		swal({
+			position: 'top-end',
+			type: 'success',
+			title: 'Inserido com sucesso!',
+			showConfirmButton: false,
+			timer: 1000
+		  })
 		todos.push(todoText);
 		inputElement.value = '';
 		renderTodos();
 		saveToStorage();
 	}else{
-		alert("Digite alguma coisa no input!");
+		swal({
+			position: 'top-end',
+			type: 'error',
+			title: 'Digite alguma coisa no campo de texto',
+			showConfirmButton: false,
+			timer: 1500
+		  })
+		  todoText.focus();
 	}
 };
 
@@ -52,9 +66,44 @@ inputElement.addEventListener('keyup', function(e){
 btnElement.onclick = addTodo;
 
 function deleteTodo(pos){
-	todos.splice(pos,1);
-	renderTodos();
-	saveToStorage();
+	const swalWithBootstrapButtons = swal.mixin({
+		confirmButtonClass: 'btn btn-success',
+		cancelButtonClass: 'btn btn-danger',
+		buttonsStyling: false,
+	  })
+	  
+	  swalWithBootstrapButtons({
+		title: 'Are you sure?',
+		text: "You won't be able to revert this!",
+		type: 'warning',
+		showCancelButton: true,
+		confirmButtonText: 'Yes, delete it!',
+		cancelButtonText: 'No, cancel!',
+		reverseButtons: true
+	  }).then((result) => {
+		if (result.value) {
+		  swalWithBootstrapButtons(
+			'Deleted!',
+			'Your file has been deleted.',
+			'success'
+		  )
+		  todos.splice(pos,1);
+		  renderTodos();
+		  saveToStorage();
+		 
+		} else if (
+		  // Read more about handling dismissals
+		  result.dismiss === swal.DismissReason.cancel
+		) {
+		  swalWithBootstrapButtons(
+			'Cancelled',
+			'Your imaginary file is safe :)',
+			'error'
+		  )
+		}
+	  })
+
+	
 }
 
 //  Só guarda chave e valor no formato string, sem relacionamento
