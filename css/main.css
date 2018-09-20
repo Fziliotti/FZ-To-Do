@@ -33,3 +33,9 @@ h1,label{
   background-color: #1F7A8C;
 }
 
+::-webkit-scrollbar{
+  background: #fff;
+}
+::-webkit-scrollbar-thumb{
+  background: #17a2b8;
+}
