@@ -9,7 +9,8 @@ function renderTodos(){
 	listElement.innerHTML = ''; //limpa a lista antes de renderizar
 	for (todo of todos){
 		var todoElement = document.createElement('li');
-		todoElement.setAttribute('class', "todo-item my-4 list-group-item bg-info d-flex justify-content-between")
+		todoElement.setAttribute('class', "todo-item my-4 list-group-item bg-info d-flex justify-content-between");
+		/* todoElement.setAttribute('onclick', "modalGitHubAvatar()"); */
 		var todoText = document.createTextNode(todo);
 
 		var linkElement = document.createElement('button');
@@ -54,6 +55,9 @@ function addTodo(){
 		  todoText.focus();
 	}
 };
+
+
+
 
 
 inputElement.addEventListener('keyup', function(e){
@@ -102,10 +106,47 @@ function deleteTodo(pos){
 		  )
 		}
 	  })
-
-	
 }
 
+function modalGitHubAvatar(){
+	swal({
+		title: 'Digite o seu nome do GitHub!',
+		input: 'text',
+		footer: `Pode testar com fziliotti se quiser =)`,
+		inputAttributes: {
+			autocapitalize: 'off'
+		},
+		showCancelButton: true,
+		confirmButtonText: 'Confirmar',
+		cancelButtonText: 'Cancelar',
+		showLoaderOnConfirm: true,
+		preConfirm: (login) => {
+			return fetch(`//api.github.com/users/${login}`)
+				.then(response => {
+					if (!response.ok) {
+						throw new Error(response.statusText)
+					}
+					return response.json()
+				})
+				.catch(error => {
+					swal.showValidationError(
+						`Request failed: ${error}`
+					)
+				})
+		},
+		allowOutsideClick: () => !swal.isLoading()
+	}).then((result) => {
+		if (result.value) {
+			console.log(result);
+			swal({
+				title: `${result.value.login}'s avatar`,
+				text: `${result.value.bio}`,
+				footer: `${result.value.html_url}`,
+				imageUrl: result.value.avatar_url
+			})
+		}
+	})
+}
 //  Só guarda chave e valor no formato string, sem relacionamento
 function saveToStorage(){
 	localStorage.setItem('lista_tarefas', JSON.stringify(todos));

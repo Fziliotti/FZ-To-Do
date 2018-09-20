@@ -6,9 +6,12 @@ body{
 
 .todo-item{
   font-size: 1.6rem;
-  display: flex;
-  align-content: center;
+  cursor:pointer;
   color:#fff;
+}
+
+.todo-tem:hover{
+  cursor:pointer;
 }
 
 h1,label{
@@ -26,7 +29,12 @@ h1,label{
 }
 
 .btn-danger {
-  background-color: rgb(243, 2, 2)
+  background-color: rgb(243, 2, 2);
+  cursor: pointer;
+}
+
+.btn{
+  cursor: pointer;
 }
 
 .bg-menu{
