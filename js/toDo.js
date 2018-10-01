@@ -111,6 +111,15 @@ function marcarTarefa(obj){
 	 obj.classList.toggle("bg-success");
 }
 
+body = document.querySelector("body");
+app = document.getElementById("app");
+function mudarTema(){
+	body.classList.toggle("tema-light");
+	app.classList.toggle("text-dark");
+}
+
+
+
 function saveToStorage(){
 	localStorage.setItem('lista_tarefas', JSON.stringify(todos));
 }

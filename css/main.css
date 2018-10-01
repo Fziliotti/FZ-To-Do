@@ -1,6 +1,7 @@
 body{
   background-color: #022B3A;
   font-family: 'Ubuntu Condensed', sans-serif;
+  color:white;
   
 }
 
@@ -13,19 +14,13 @@ body{
   justify-content: space-between;
   background-color: lightsalmon;
   text-transform: capitalize;
- 
-  
-
 }
 
 
-
-h1,label{
-  color:#E1E5F2;
-}
 
 .lblCadastrar{
   font-size: 1.6rem;
+  font-weight: 500;
 }
 
 
@@ -53,4 +48,22 @@ h1,label{
 }
 ::-webkit-scrollbar-thumb{
   background: darkblue;
+}
+
+.text-dark{
+  color:black;
+  transition: 0.s all;
+}
+
+.tema-light{
+  color: black;
+  background-color: white;
+  transition: 0.5s all;
+}
+
+
+.footer{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
