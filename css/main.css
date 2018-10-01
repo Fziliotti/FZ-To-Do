@@ -8,11 +8,17 @@ body{
   font-size: 1.6rem;
   cursor:pointer;
   color:#fff;
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: lightsalmon;
+  text-transform: capitalize;
+ 
+  
+
 }
 
-.todo-tem:hover{
-  cursor:pointer;
-}
+
 
 h1,label{
   color:#E1E5F2;
@@ -43,7 +49,8 @@ h1,label{
 
 ::-webkit-scrollbar{
   background: #fff;
+  width: 8px;
 }
 ::-webkit-scrollbar-thumb{
-  background: #17a2b8;
+  background: darkblue;
 }
