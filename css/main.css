@@ -5,6 +5,13 @@ body{
   
 }
 
+.header{
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .todo-item{
   font-size: 1.6rem;
   cursor:pointer;
@@ -42,13 +49,6 @@ body{
   background-color: #1F7A8C;
 }
 
-::-webkit-scrollbar{
-  background: #fff;
-  width: 8px;
-}
-::-webkit-scrollbar-thumb{
-  background: darkblue;
-}
 
 .text-dark{
   color:black;
@@ -66,4 +66,40 @@ body{
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+
+
+
+.simbol{
+  font-size: 3rem;
+  color: black;
+  animation: colorir 6s alternate-reverse ease-in-out infinite;
+}
+
+
+@keyframes colorir{
+  0%{
+    color: black;
+  }
+
+  50%{
+    color:darkblue;
+  }
+
+  100%{
+    color: #fff;
+  }
+}
+
+
+/* Scroll */
+::-webkit-scrollbar{
+  background: black;
+  width: 6px;
+  
+}
+::-webkit-scrollbar-thumb{
+  background:#e1e1e1;
+  
 }
