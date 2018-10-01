@@ -2,6 +2,7 @@ body{
   background-color: #022B3A;
   font-family: 'Ubuntu Condensed', sans-serif;
   color:white;
+  transition: 0.5s all;
   
 }
 
@@ -10,6 +11,10 @@ body{
   display: flex;
   align-items: center;
   justify-content: center;
+  background: #06beb6;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #48b1bf, #06beb6);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #48b1bf, #06beb6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color:#f1f1f1;
 }
 
 .todo-item{
@@ -19,11 +24,17 @@ body{
   display:flex;
   align-items: center;
   justify-content: space-between;
-  background-color: lightsalmon;
+  background-color:cadetblue;
   text-transform: capitalize;
 }
 
+.linkSite{
+  color:#1F7A8C;
+}
 
+.linkSite:hover{
+  text-decoration: none;
+}
 
 .lblCadastrar{
   font-size: 1.6rem;
@@ -44,11 +55,6 @@ body{
 .btn{
   cursor: pointer;
 }
-
-.bg-menu{
-  background-color: #1F7A8C;
-}
-
 
 .text-dark{
   color:black;

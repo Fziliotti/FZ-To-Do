@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>PWA - FZ Lista de Tarefas</title>
 	<meta name="description" content="App Lista de afazeres usando Javascript Puro - Fziliotti">
-    <!-- Add to homescreen for Chrome on Android -->
-    <meta name="mobile-web-app-capable" content="yes">
-    <link rel="icon" sizes="192x192" href="imgs/launcher-icon-2x.png">
-    <meta name="theme-color" content="#0f1419">
-    <link rel="manifest" href="manifest.json">
+	<!-- Add to homescreen for Chrome on Android -->
+	<meta name="mobile-web-app-capable" content="yes">
+	<link rel="icon" sizes="192x192" href="imgs/launcher-icon-2x.png">
+	<meta name="theme-color" content="#0f1419">
+	<link rel="manifest" href="manifest.json">
 	<!-- Favicon -->
-    <link rel="shortcut icon" href="imgs/favicon.ico" type="image/x-icon" />
+	<link rel="shortcut icon" href="imgs/favicon.ico" type="image/x-icon" />
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Ubuntu+Condensed" rel="stylesheet">
@@ -19,42 +20,44 @@
 	<link rel="stylesheet" href="css/main.css">
 
 </head>
+
 <body>
-	<div class="header bg-menu text-light py-4 mb-4">
-		<h1 class="text-center"> <span class="simbol"><</span> Lista de Tarefas <span class="simbol">/></span></h1>
+	<div class="header py-4 mb-4">
+		<h1 class="text-center"> <span class="simbol">
+				<</span> Lista de Tarefas <span class="simbol">/>
+			</span></h1>
 	</div>
+
 	<div class="container">
-		
 		<div id="app">
-			<label class="lblCadastrar" for="novaTarefa">Cadastre uma nova tarefa:</label>
+			<label class="lblCadastrar" for="novaTarefa">Digite o nome da sua tarefa:</label>
 			<div class="input-group mb-3">
-				<input id="novaTarefa" type="text" maxlength="38" class="form-control" placeholder="Cadastra alguma tarefa aê =)">
+				<input id="novaTarefa" type="text" maxlength="38" class="form-control" placeholder="ex: passear com o cachorro..">
 				<div class="input-group-append">
-					<button class="btnPLUS btn btn-success btn-lg" type="submit"><span class="btnPLUS-text">+</span></button> 
+					<button class="btnPLUS btn btn-success btn-lg" type="submit"><span class="btnPLUS-text">+</span></button>
 				</div>
 			</div>
-			
+
 			<ul class="my-4 list-group">
-			
+
 			</ul>
 		</div>
 
 	</div>
 
 	<footer class="footer container">
-		
-		  <span class="text-muted">Desenvolvido por Fabrício Ziliotti. Nenhum direito reservado =)</span>
-		
-		<button id="toggleTema" onclick="mudarTema()" class="btn btn-secondary btn-sm">ToggleTema</button>
-	  </footer>
 
-	
+		<span class="text-muted">Desenvolvido por <a class="linkSite" href="http://fziliotti.esy.es/">Fabrício Fernandes Ziliotti</a>. Nenhum direito reservado =)</span>
+
+		<button id="toggleTema" onclick="mudarTema()" class="btn btn-secondary btn-sm">ToggleTema</button>
+	</footer>
+
+
 
 
 
 	<script src="js/toDo.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.26.29/dist/sweetalert2.all.min.js"></script>
-	<!-- Optional: include a polyfill for ES6 Promises for IE11 and Android browser -->
 	<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
 </body>
 
