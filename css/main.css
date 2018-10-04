@@ -18,7 +18,7 @@ body{
 }
 
 .todo-item{
-  max-width: 800px;
+ 
   font-size: 1.6rem;
   cursor:pointer;
   color:#fff;
@@ -83,6 +83,10 @@ body{
   font-size: 3rem;
   color: black;
   animation: colorir 6s alternate-reverse ease-in-out infinite;
+}
+
+#app{
+  max-width: 800px;
 }
 
 
