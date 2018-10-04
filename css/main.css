@@ -18,6 +18,7 @@ body{
 }
 
 .todo-item{
+  max-width: 800px;
   font-size: 1.6rem;
   cursor:pointer;
   color:#fff;
@@ -72,6 +73,7 @@ body{
   display: flex;
   align-items: center;
   justify-content: space-between;
+  max-width: 800px;
 }
 
 

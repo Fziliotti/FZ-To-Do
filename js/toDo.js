@@ -26,7 +26,8 @@ function renderTodos() {
 		listElement.appendChild(todoElement);
 	}
 }
-renderTodos(); // RENDERIZAR PELOMENOS UMA VEZ
+
+
 
 function addTodo() {
 	var todoText = inputElement.value;
@@ -119,6 +120,12 @@ function mudarTema() {
 	app.classList.toggle("text-dark");
 }
 
+
+
+// Função anonima
+(() =>{
+	renderTodos();
+})();
 
 
 function saveToStorage() {
