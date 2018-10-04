@@ -6,6 +6,11 @@ body{
   
 }
 
+#app{
+  margin: 0 auto;
+  max-width: 800px;
+}
+
 .header{
   height: 80px;
   display: flex;
@@ -85,11 +90,10 @@ body{
   animation: colorir 6s alternate-reverse ease-in-out infinite;
 }
 
-#app{
-  max-width: 800px;
-}
 
 
+
+/* ANIMATION */
 @keyframes colorir{
   0%{
     color: black;
