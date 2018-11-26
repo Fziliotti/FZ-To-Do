@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br" manifest="offline.manifest">
+<html lang="pt-br">
 
 <head>
 	<meta charset="utf-8">
@@ -10,12 +10,13 @@
 	<meta name="mobile-web-app-capable" content="yes">
 	<link rel="icon" sizes="192x192" href="imgs/launcher-icon-2x.png">
 	<meta name="theme-color" content="#0f1419">
-	<link rel="manifest" href="manifest.json">
+	<!-- <link rel="manifest" href="manifest.json"> -->
 	<!-- Favicon -->
 	<link rel="shortcut icon" href="imgs/favicon.ico" type="image/x-icon" />
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Ubuntu+Condensed" rel="stylesheet">
+
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@7.26.29/dist/sweetalert2.min.css">
 	<link rel="stylesheet" href="css/main.css">
 
@@ -41,24 +42,48 @@
 			<ul class="my-4 list-group">
 
 			</ul>
+
+
+
 		</div>
 
 	</div>
 
-	<footer class="footer container">
-
-		<span class="text-muted">Desenvolvido por <a class="linkSite" href="http://fziliotti.esy.es/">Fabrício Fernandes Ziliotti</a>. Nenhum direito reservado =)</span>
-
-		<button id="toggleTema" onclick="mudarTema()" class="btn btn-secondary btn-sm">ToggleTema</button>
-	</footer>
+	
 
 
+	<div class="container">
+		<div class="row mx-auto mt-4 w-50">
+			<div class="col-md-4 "> <button type="button" onclick="pomodoro(25)" class="btn btn-info ">Pomodoro-25</button></div>
+			<div class="col-md-4  "> <button type="button" onclick="pomodoro(50)" class="btn btn-info ">Pomodoro-50</button></div>
+			<div class="col-md-4"> <button type="button" onclick="cronometroFade()" class="btn btn-info ">CRONOMETRO</button></div>
+		</div>
+	</div>
 
+	<div class="container w-50 d-flex">
+		<div id="boxCronometro" class="containerTimer d-none   mx-auto mt-4">
+			<h1 class="text-center" data-chronometer>00:00:00</h1>
+			<button class="btn btn-info" id="play">Começar</button>
+			<button class="btn btn-info" id="pause">Pausar</button>
+			<button class="btn btn-danger" id="reset">Resetar</button>
+		</div>
+	</div>
 
+	<footer class="footer container mt-5">
+			<span class="text-muted">Desenvolvido por <a class="linkSite" href="https://fziliotti.github.io/Fziliotti/">Fabrício Fernandes
+					Ziliotti</a>. Nenhum direito reservado =)</span>
+			<button id="toggleTema" onclick="mudarTema()" class="btn btn-secondary btn-sm">ToggleTema</button>
+		</footer>
 
+	<script>
+		var boxCronometro = document.getElementById('boxCronometro');
+		function cronometroFade() {
+			boxCronometro.classList.toggle('d-none');
+		}
+	</script>
 	<script src="js/toDo.js"></script>
+	<script src="js/cronometro.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@7.26.29/dist/sweetalert2.all.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
 </body>
 
 </html>

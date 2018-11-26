@@ -90,6 +90,10 @@ body{
   animation: colorir 6s alternate-reverse ease-in-out infinite;
 }
 
+#boxCronometro{
+  transition: .3s all  ease-in-out;
+}
+
 
 
 
