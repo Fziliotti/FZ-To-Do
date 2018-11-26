@@ -49,34 +49,40 @@
 
 	</div>
 
+
+
+
+
+
 	
 
+	<footer class="footer container mt-3">
+		<span class="text-muted">Desenvolvido por <a class="linkSite" href="https://fziliotti.github.io/Fziliotti/">Fabrício
+				Fernandes
+				Ziliotti</a>. Nenhum direito reservado =)</span>
+		<button id="toggleTema" onclick="mudarTema()" class="btn btn-secondary btn-sm">ToggleTema</button>
+
+	</footer>
 
 	<div class="container">
-		<div class="row mx-auto mt-4 w-50">
-			<div class="col-md-4 "> <button type="button" onclick="pomodoro(25)" class="btn btn-info ">Pomodoro-25</button></div>
-			<div class="col-md-4  "> <button type="button" onclick="pomodoro(50)" class="btn btn-info ">Pomodoro-50</button></div>
-			<div class="col-md-4"> <button type="button" onclick="cronometroFade()" class="btn btn-info ">CRONOMETRO</button></div>
+		<div class="btn-group mt-3 mx-auto" role="group" aria-label="Basic example">
+			<button type="button" onclick="pomodoro(25)" class="btn btn-warning  ">P-25</button>
+			<button type="button" onclick="pomodoro(50)" class="btn btn-info  ">P-50</button>
+			<button type="button" onclick="cronometroFade()" class="btn btn-secondary  ">CRONOMETRO</button>
 		</div>
 	</div>
-
-	<div class="container w-50 d-flex">
-		<div id="boxCronometro" class="containerTimer d-none   mx-auto mt-4">
-			<h1 class="text-center" data-chronometer>00:00:00</h1>
-			<button class="btn btn-info" id="play">Começar</button>
-			<button class="btn btn-info" id="pause">Pausar</button>
-			<button class="btn btn-danger" id="reset">Resetar</button>
+	<div class="container d-flex">
+			<div id="boxCronometro" class="containerTimer d-none   mx-auto mt-4">
+				<h1 class="text-center" data-chronometer>00:00:00</h1>
+				<button class="btn btn-info" id="play">Começar</button>
+				<button class="btn btn-info" id="pause">Pausar</button>
+				<button class="btn btn-danger" id="reset">Resetar</button>
+			</div>
 		</div>
-	</div>
-
-	<footer class="footer container mt-5">
-			<span class="text-muted">Desenvolvido por <a class="linkSite" href="https://fziliotti.github.io/Fziliotti/">Fabrício Fernandes
-					Ziliotti</a>. Nenhum direito reservado =)</span>
-			<button id="toggleTema" onclick="mudarTema()" class="btn btn-secondary btn-sm">ToggleTema</button>
-		</footer>
 
 	<script>
 		var boxCronometro = document.getElementById('boxCronometro');
+
 		function cronometroFade() {
 			boxCronometro.classList.toggle('d-none');
 		}
