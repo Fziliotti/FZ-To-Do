@@ -15,7 +15,7 @@ function renderTodos() {
 	for (todo of todos) {
 		var todoElement = document.createElement('li');
 		todoElement.setAttribute('class', "todo-item my-4 list-group-item")
-		todoElement.setAttribute('ondblclick', 'pomodoro(1500000)');
+		todoElement.setAttribute('ondblclick', 'teste()');
 		var todoText = document.createTextNode(todo);
 		var linkElement = document.createElement('button');
 		linkElement.setAttribute('class', 'btn btn-danger ml-2 float-right')
@@ -106,12 +106,12 @@ function pomodoro(minutes) {
 	swal({
 		title: 'Pomodoro ' + minutes + ' minutos!',
 		html: 'Eu irei desaparecer em <strong></strong> segundos.',
-		timer:  minutes*60000,
+		timer: minutes * 60000,
 		onOpen: () => {
 			swal.showLoading()
 			timerInterval = setInterval(() => {
 				swal.getContent().querySelector('strong')
-					.textContent = swal.getTimerLeft()/1000
+					.textContent = swal.getTimerLeft() / 1000
 			}, 100)
 		},
 		onClose: () => {
@@ -134,6 +134,31 @@ function pomodoro(minutes) {
 }
 
 
+
+async function teste() {
+	// inputOptions can be an object or Promise
+	const inputOptions = new Promise((resolve) => {
+		setTimeout(() => {
+			resolve({
+				'25': 'Pomodoro 25min',
+				'50': 'Pomodoro 50min'
+			})
+		}, 2000)
+	})
+	const {value: min} = await swal({
+		title: 'Escolha um pomodoro',
+		input: 'radio',
+		inputOptions: inputOptions,
+		inputValidator: (value) => {
+			return !value && 'Escolha um dos dois pomodoros!'
+		}
+	})
+
+	if (min) {
+		pomodoro(min) 
+	}
+}
+
 // LISTENERS
 inputElement.addEventListener('keyup', function (e) {
 	var key = e.which || e.keyCode;
@@ -147,6 +172,7 @@ btnElement.onclick = addTodo;
 // MUDANÇA DE TEMA
 body = document.querySelector("body");
 app = document.getElementById("app");
+
 function mudarTema() {
 	body.classList.toggle("tema-light");
 	app.classList.toggle("text-dark");
@@ -156,6 +182,3 @@ function mudarTema() {
 (() => {
 	renderTodos();
 })();
-
-
-
