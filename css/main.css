@@ -91,7 +91,12 @@ body{
 }
 
 #boxCronometro{
+  opacity: 1;
   transition: .3s all  ease-in-out;
+}
+
+.esconder{
+  opacity: 0 !important;
 }
 
 

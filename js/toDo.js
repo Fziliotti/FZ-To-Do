@@ -105,13 +105,13 @@ function pomodoro(minutes) {
 	let timerInterval
 	swal({
 		title: 'Pomodoro ' + minutes + ' minutos!',
-		html: 'Eu irei desaparecer em <strong></strong> segundos.',
+		html: 'Eu irei desaparecer em <strong></strong>',
 		timer: minutes * 60000,
 		onOpen: () => {
 			swal.showLoading()
 			timerInterval = setInterval(() => {
 				swal.getContent().querySelector('strong')
-					.textContent = swal.getTimerLeft() / 1000
+					.textContent = (swal.getTimerLeft() / 1000).toFixed(2) + " segundos ou "+ (swal.getTimerLeft() / 1000/60).toFixed(2) + " minutos."
 			}, 100)
 		},
 		onClose: () => {
@@ -137,16 +137,22 @@ function pomodoro(minutes) {
 
 async function teste() {
 	// inputOptions can be an object or Promise
-	const inputOptions = new Promise((resolve) => {
-		setTimeout(() => {
-			resolve({
-				'25': 'Pomodoro 25min',
-				'50': 'Pomodoro 50min'
-			})
-		}, 2000)
-	})
+	// const inputOptions = new Promise((resolve) => {
+	// 	setTimeout(() => {
+	// 		resolve({
+	// 			'25': 'Pomodoro 25min',
+	// 			'50': 'Pomodoro 50min'
+	// 		})
+	// 	}, 2000)
+	// })
+	const inputOptions = {
+		'25': 'Pomodoro 25min',
+		'50': 'Pomodoro 50min'
+	}
+
 	const {value: min} = await swal({
 		title: 'Escolha um pomodoro',
+		text: ' Técnica Pomodoro é um método de gerenciamento de tempo. A técnica consiste na utilização de um cronômetro para dividir o trabalho em períodos de 25 ou 50 minutos, separados por breves intervalos.',
 		input: 'radio',
 		inputOptions: inputOptions,
 		inputValidator: (value) => {
@@ -155,7 +161,7 @@ async function teste() {
 	})
 
 	if (min) {
-		pomodoro(min) 
+		pomodoro(min)
 	}
 }
 

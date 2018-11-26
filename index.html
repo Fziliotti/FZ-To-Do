@@ -25,7 +25,8 @@
 <body>
 	<div class="header py-4 mb-4">
 		<h1 class="text-center"> <span class="simbol">
-				<</span> Lista de Tarefas <span class="simbol">/></span>
+				<</span> Lista de Tarefas <span class="simbol">/>
+			</span>
 		</h1>
 	</div>
 
@@ -51,10 +52,14 @@
 		<span class="text-muted">Desenvolvido por <a class="linkSite" href="https://fziliotti.github.io/Fziliotti/">Fabrício
 				Fernandes
 				Ziliotti</a> =)</span>
-		<button id="toggleTema" onclick="mudarTema()" class="btn btn-secondary btn-sm">ToggleTema</button>
+		<div class="btn-group" role="group" aria-label="Basic example">
+			<button id="toggleTema" onclick="mudarTema()" class="btn btn-light btn-sm">Tema-Claro</button>
+			<button type="button" onclick="cronometroFade()" class="btn btn-warning  ">Cronometro</button>
+		</div>
+
 	</footer>
 
-	<div class="container ">
+	<!-- <div class="container ">
 		<div class="row">
 			<div class="btn-group mt-3 mx-auto" role="group" aria-label="Basic example">
 				<button type="button" onclick="pomodoro(25)" class="btn btn-warning  ">P-25</button>
@@ -62,12 +67,12 @@
 				<button type="button" onclick="cronometroFade()" class="btn btn-secondary  ">CRONOMETRO</button>
 			</div>
 		</div>
-	</div>
+	</div> -->
 	<div class="container d-flex ">
-		<div id="boxCronometro" class="containerTimer d-none   mx-auto mt-4">
+		<div id="boxCronometro" class="containerTimer esconder mx-auto mt-4">
 			<h1 class="text-center" data-chronometer>00:00:00</h1>
-			<button class="btn btn-info" id="play">Começar</button>
-			<button class="btn btn-info" id="pause">Pausar</button>
+			<button class="btn btn-success" id="play">Começar</button>
+			<button class="btn btn-secondary" id="pause">Pausar</button>
 			<button class="btn btn-danger" id="reset">Resetar</button>
 		</div>
 	</div>
@@ -76,7 +81,7 @@
 		var boxCronometro = document.getElementById('boxCronometro');
 
 		function cronometroFade() {
-			boxCronometro.classList.toggle('d-none');
+			boxCronometro.classList.toggle('esconder');
 		}
 	</script>
 	<script src="js/toDo.js"></script>
