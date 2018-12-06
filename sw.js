@@ -1,4 +1,4 @@
-var versao = 9
+var versao = 1
 
 var arquivos = [
 "/",
@@ -16,11 +16,11 @@ self.addEventListener("install", function(){
 })
 
 self.addEventListener("activate", function(){
-    caches.open("pwa-arquivos-" + versao).then(cache => {
+    caches.open("todo-arquivos-" + versao).then(cache => {
         cache.addAll(arquivos)
             .then(function(){
-                caches.delete("pwa-arquivos-" + (versao - 1 ))   
-                caches.delete("pwa-arquivos")   
+                caches.delete("todo-arquivos-" + (versao - 1 ))   
+                caches.delete("todo-arquivos")   
             })
         
     })
