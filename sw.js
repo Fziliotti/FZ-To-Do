@@ -1,5 +1,6 @@
 var versao = 15
 var arquivos = [
+    "index.html",
     "css/main.css",
     "css/bootstrap4.css",
     "css/sweetalert.css",
@@ -9,11 +10,13 @@ var arquivos = [
     "offline/index.html"
 ]
 
+// Intalação do service worker
 self.addEventListener("install", function () {
     this.skipWaiting();
     console.log("Instalou service worker!")
 })
 
+// Ativação e callback que irá excluir as versões anteriores do service worker
 self.addEventListener("activate", function () {
     caches.open("todo-arquivos-" + versao).then(cache => {
         cache.addAll(arquivos)
@@ -25,7 +28,7 @@ self.addEventListener("activate", function () {
     })
 })
 
-
+// fetch que irá tratar as chamadas nos pedidos e verificar se está em cache
 self.addEventListener("fetch", function (event) {
 
     let pedido = event.request
@@ -33,7 +36,5 @@ self.addEventListener("fetch", function (event) {
         let resposta = respostaCache ? respostaCache : fetch(pedido)
         return resposta
     })
-
     event.respondWith(promiseResposta)
-
 })
