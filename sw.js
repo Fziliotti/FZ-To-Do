@@ -1,4 +1,4 @@
-var versao = 1
+var versao = 2
 
 var arquivos = [
 "/",
