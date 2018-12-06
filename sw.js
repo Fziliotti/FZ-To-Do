@@ -39,7 +39,7 @@ self.addEventListener("fetch", function (event) {
             return resposta
         })
         .catch(() => {
-            return caches.match('/offline/index.html');
+            return caches.match('offline/index.html');
         })
     )
 })
