@@ -31,9 +31,15 @@ self.addEventListener("activate", function () {
 self.addEventListener("fetch", function (event) {
 
     let pedido = event.request
-    let promiseResposta = caches.match(pedido).then(respostaCache => {
-        let resposta = respostaCache ? respostaCache : fetch(pedido)
-        return resposta
-    })
-    event.respondWith(promiseResposta)
+
+    event.respondWith(
+        caches.match(pedido)
+        .then(respostaCache => {
+            let resposta = respostaCache ? respostaCache : fetch(pedido)
+            return resposta
+        })
+        .catch(() => {
+            return caches.match('/offline/index.html');
+        })
+    )
 })
