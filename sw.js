@@ -1,38 +1,50 @@
-var versao = 2
+const staticCacheName = 'todo-11';
 
-var arquivos = [
-"/",
-"css/main.css",
-"css/bootstrap4.css",
-"css/sweetalert.css",
-"https://fonts.googleapis.com/css?family=Ubuntu+Condensed",
-"js/toDo.js",
-"js/cronometro.js",
-"js/sweetalert2.js"
+const filesToCache = [
+    "/",
+    "/css/main.css",
+    "/css/bootstrap4.css",
+    "/css/sweetalert.css",
+    "/js/toDo.js",
+    "/js/cronometro.js",
+    "/js/sweetalert2.js",
+    '/offline/index.html'
 ]
 
-self.addEventListener("install", function(){
-    console.log("Instalou service worker!")
-})
+// Cache on install
+this.addEventListener("install", () => {
+    this.skipWaiting();
+    console.log("Registrando service Worker");
 
-self.addEventListener("activate", function(){
-    caches.open("todo-arquivos-" + versao).then(cache => {
-        cache.addAll(arquivos)
-            .then(function(){
-                caches.delete("todo-arquivos-" + (versao - 1 ))   
-                caches.delete("todo-arquivos")   
-            })
-        
-    })
-})
+});
 
 
-self.addEventListener("fetch", function(event){
+// Limpa o cache depois de instalar um novo service worker
+this.addEventListener('activate', event => {
+    event.waitUntil(
+        caches.keys().then(cacheNames => {
+            return Promise.all(
+                cacheNames
+                .filter(cacheName => (cacheName.startsWith('todo-')))
+                .filter(cacheName => (cacheName !== staticCacheName))
+                .map(cacheName => caches.delete(cacheName))
+            );
+        })
+    );
+});
+
+
+// Serve from Cache
+this.addEventListener("fetch", function (event) {
     let pedido = event.request
-    let promiseResposta = caches.match(pedido).then(respostaCache => {
-        let resposta = respostaCache ? respostaCache : fetch(pedido)
-        return resposta
-    })
+
+    let promiseResposta = caches.match(pedido)
+        .then(respostaCache => {
+            let resposta = respostaCache ? respostaCache : fetch(pedido)
+            return resposta
+        }).catch(() => {
+            return caches.match('/offline/index.html');
+        })
+
     event.respondWith(promiseResposta)
 })
-
