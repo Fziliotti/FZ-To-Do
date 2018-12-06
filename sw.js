@@ -1,6 +1,5 @@
-var versao = 15
+var versao = 16
 var arquivos = [
-    "index.html",
     "css/main.css",
     "css/bootstrap4.css",
     "css/sweetalert.css",
