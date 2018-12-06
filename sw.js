@@ -1,4 +1,4 @@
-var versao = 16
+var versao = 17
 var arquivos = [
     "css/main.css",
     "css/bootstrap4.css",
