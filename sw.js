@@ -1,10 +1,8 @@
-var versao = 18
+var versao = 19
 var arquivos = [
     "css/main.css",
     "css/bootstrap4.css",
     "css/sweetalert.css",
-    "js/toDo.js",
-    "js/cronometro.js",
     "js/sweetalert2.js",
     "offline/index.html"
 ]

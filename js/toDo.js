@@ -14,21 +14,33 @@ function renderTodos() {
 	listElement.innerHTML = ''; //limpa a lista antes de renderizar
 	for (todo of todos) {
 		var todoElement = document.createElement('li');
+		var todoText = document.createTextNode(todo);
+
 		todoElement.setAttribute('class', "todo-item my-4 list-group-item")
 		todoElement.setAttribute('ondblclick', 'teste()');
-		var todoText = document.createTextNode(todo);
+
+		
+		var linkText = document.createTextNode('DEL');
+		
 		var linkElement = document.createElement('button');
 		linkElement.setAttribute('class', 'btn btn-danger ml-2 float-right')
 
-		var linkText = document.createTextNode('DEL');
+		
+		var textBtnInfo = document.createTextNode('ae');
+		var TodoInformacoes = document.createElement('button');
+		TodoInformacoes.setAttribute('class', 'btn btn-secondaru ml-2 float-left')
+
 		var pos = todos.indexOf(todo);
 		linkElement.setAttribute('onclick', 'deleteTodo(' + pos + ')');
 
 		// CRIANDO O RELACIONAMENTO DOS ELEMENTOS
 		linkElement.appendChild(linkText);
+		TodoInformacoes.appendChild(textBtnInfo);
+		
 		todoElement.appendChild(todoText);
 		todoElement.appendChild(linkElement);
-		listElement.appendChild(todoElement);
+		todoElement.appendChild(TodoInformacoes);
+		// todoElement.appendChild()
 	}
 }
 
@@ -125,16 +137,43 @@ function pomodoro(minutes) {
 			// Read more about handling dismissals
 			result.dismiss === swal.DismissReason.timer
 		) {
+			pomodoroDescanso(5)
+
+		}
+	})
+}
+
+function pomodoroDescanso(minutes) {
+	let timerInterval
+	swal({
+		title: 'Descanso de ' + minutes + ' minutos!',
+		html: 'Eu irei desaparecer em <strong></strong>',
+		timer: minutes * 60000,
+		onOpen: () => {
+			swal.showLoading()
+			timerInterval = setInterval(() => {
+				var tempoSegundos = (swal.getTimerLeft() / 1000).toFixed(2);
+				var tempoMinutos = (swal.getTimerLeft() / 1000 / 60).toFixed(2);
+				swal.getContent().querySelector('strong')
+					.textContent = tempoSegundos + " segundos ou " + tempoMinutos + " minutos."
+			}, 100)
+		},
+		onClose: () => {
+			clearInterval(timerInterval)
+			beep()
+		}
+	}).then((result) => {
+		if (
+			// Read more about handling dismissals
+			result.dismiss === swal.DismissReason.timer
+		) {
 			swal({
 				position: 'top-end',
 				type: 'success',
-				title: 'Pomodoro completado',
+				title: 'Descansou!',
 				showConfirmButton: false,
 				timer: 1000
 			})
-
-
-
 		}
 	})
 }
@@ -142,15 +181,6 @@ function pomodoro(minutes) {
 
 
 async function teste() {
-	// inputOptions can be an object or Promise
-	// const inputOptions = new Promise((resolve) => {
-	// 	setTimeout(() => {
-	// 		resolve({
-	// 			'25': 'Pomodoro 25min',
-	// 			'50': 'Pomodoro 50min'
-	// 		})
-	// 	}, 2000)
-	// })
 	const inputOptions = {
 		'25': '25min',
 		'50': '50min'
