@@ -47,7 +47,9 @@
 			<div class="input-group mb-3">
 				<input id="novaTarefa" type="text" maxlength="38" class="form-control" placeholder="ex: passear com o cachorro..">
 				<div class="input-group-append">
+					<input type="color" id="inputTodoColor" name="inputTodoColor" value="#ff0000">
 					<button class="btnPLUS btn btn-success btn-lg" type="submit"><span class="btnPLUS-text">+</span></button>
+				
 				</div>
 			</div>
 
@@ -82,7 +84,6 @@
 
 	<script>
 		var boxCronometro = document.getElementById('boxCronometro');
-
 		function cronometroFade() {
 			boxCronometro.classList.toggle('esconder');
 		}

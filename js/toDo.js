@@ -1,8 +1,8 @@
 var listElement = document.querySelector('#app ul');
 var inputElement = document.querySelector('#app input');
 var btnElement = document.querySelector('#app button');
-
-var todos = JSON.parse(localStorage.getItem('lista_tarefas')) || [];
+var inputTodoColor = document.querySelector('#app #inputTodoColor')
+var todos = JSON.parse(localStorage.getItem('lista_tarefas')) || [{texto: "aeee", cor: "#323232"}];
 
 
 function saveToStorage() {
@@ -14,33 +14,22 @@ function renderTodos() {
 	listElement.innerHTML = ''; //limpa a lista antes de renderizar
 	for (todo of todos) {
 		var todoElement = document.createElement('li');
-		var todoText = document.createTextNode(todo);
-
 		todoElement.setAttribute('class', "todo-item my-4 list-group-item")
 		todoElement.setAttribute('ondblclick', 'teste()');
-
-		
-		var linkText = document.createTextNode('DEL');
-		
+		todoElement.style.backgroundColor = todo.cor;
+		var todoText = document.createTextNode(todo.texto);
 		var linkElement = document.createElement('button');
 		linkElement.setAttribute('class', 'btn btn-danger ml-2 float-right')
 
-		
-		var textBtnInfo = document.createTextNode('ae');
-		var TodoInformacoes = document.createElement('button');
-		TodoInformacoes.setAttribute('class', 'btn btn-secondaru ml-2 float-left')
-
+		var linkText = document.createTextNode('DEL');
 		var pos = todos.indexOf(todo);
 		linkElement.setAttribute('onclick', 'deleteTodo(' + pos + ')');
 
 		// CRIANDO O RELACIONAMENTO DOS ELEMENTOS
 		linkElement.appendChild(linkText);
-		TodoInformacoes.appendChild(textBtnInfo);
-		
 		todoElement.appendChild(todoText);
 		todoElement.appendChild(linkElement);
-		todoElement.appendChild(TodoInformacoes);
-		// todoElement.appendChild()
+		listElement.appendChild(todoElement);
 	}
 }
 
@@ -48,6 +37,11 @@ function renderTodos() {
 
 function addTodo() {
 	var todoText = inputElement.value;
+	var todoCor = inputTodoColor.value;
+	var newTodo = {
+		texto: todoText,
+		cor: todoCor
+	};
 	if (todoText.trim()) {
 		swal({
 			position: 'top-end',
@@ -56,7 +50,7 @@ function addTodo() {
 			showConfirmButton: false,
 			timer: 1000
 		})
-		todos.push(todoText);
+		todos.push(newTodo);
 		inputElement.value = '';
 		renderTodos();
 		saveToStorage();
@@ -137,43 +131,16 @@ function pomodoro(minutes) {
 			// Read more about handling dismissals
 			result.dismiss === swal.DismissReason.timer
 		) {
-			pomodoroDescanso(5)
-
-		}
-	})
-}
-
-function pomodoroDescanso(minutes) {
-	let timerInterval
-	swal({
-		title: 'Descanso de ' + minutes + ' minutos!',
-		html: 'Eu irei desaparecer em <strong></strong>',
-		timer: minutes * 60000,
-		onOpen: () => {
-			swal.showLoading()
-			timerInterval = setInterval(() => {
-				var tempoSegundos = (swal.getTimerLeft() / 1000).toFixed(2);
-				var tempoMinutos = (swal.getTimerLeft() / 1000 / 60).toFixed(2);
-				swal.getContent().querySelector('strong')
-					.textContent = tempoSegundos + " segundos ou " + tempoMinutos + " minutos."
-			}, 100)
-		},
-		onClose: () => {
-			clearInterval(timerInterval)
-			beep()
-		}
-	}).then((result) => {
-		if (
-			// Read more about handling dismissals
-			result.dismiss === swal.DismissReason.timer
-		) {
 			swal({
 				position: 'top-end',
 				type: 'success',
-				title: 'Descansou!',
+				title: 'Pomodoro completado',
 				showConfirmButton: false,
 				timer: 1000
 			})
+
+
+
 		}
 	})
 }
@@ -181,6 +148,15 @@ function pomodoroDescanso(minutes) {
 
 
 async function teste() {
+	// inputOptions can be an object or Promise
+	// const inputOptions = new Promise((resolve) => {
+	// 	setTimeout(() => {
+	// 		resolve({
+	// 			'25': 'Pomodoro 25min',
+	// 			'50': 'Pomodoro 50min'
+	// 		})
+	// 	}, 2000)
+	// })
 	const inputOptions = {
 		'25': '25min',
 		'50': '50min'
