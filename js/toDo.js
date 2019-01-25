@@ -27,6 +27,7 @@ function renderTodos() {
 }
 
 function addTodo() {
+	var todoText = inputElement.value;
 	if (todoText.trim()) {
 		swal({
 			position: 'top-end',
@@ -36,7 +37,7 @@ function addTodo() {
 			timer: 1000
 		})
 
-		var todoText = inputElement.value;
+		
 		var todoCor = '#3eb3be';
 		var newTodo = {
 			texto: todoText,
