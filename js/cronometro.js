@@ -1,4 +1,3 @@
-
 (() => {
 
     let hours = `00`,
@@ -52,3 +51,10 @@
     }
 
 })()
+
+
+var boxCronometro = document.getElementById('boxCronometro');
+
+function cronometroFade() {
+    boxCronometro.classList.toggle('esconder');
+}

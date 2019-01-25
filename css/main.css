@@ -23,7 +23,7 @@ body{
 }
 
 .todo-item{
- 
+  /* user-select: none; */
   font-size: 1.6rem;
   cursor:pointer;
   color:#fff;

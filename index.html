@@ -2,95 +2,94 @@
 <html lang="pt-br">
 
 <head>
+	<!-- METAS -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>PWA - FZ Lista de Tarefas</title>
 	<meta name="description" content="App Lista de afazeres usando Javascript Puro - Fziliotti">
-	<!-- Add to homescreen for Chrome on Android -->
 	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="theme-color" content="#317EFB" />
+	<!-- LINKS -->
 	<link rel="icon" sizes="192x192" href="imgs/launcher-icon-2x.png">
-	<meta name="theme-color" content="#317EFB"/>
 	<link href="manifest.json" rel="manifest" type="UTF-8">
-	<!-- <link rel="manifest" href="manifest.json"> -->
-	<!-- Favicon -->
 	<link rel="shortcut icon" href="imgs/favicon.ico" type="image/x-icon" />
-	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="css/bootstrap4.css">
+	<link href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Ubuntu+Condensed" rel="stylesheet">
-
-
 	<link rel="stylesheet" href="css/sweetalert.css">
 	<link rel="stylesheet" href="css/main.css">
+	<title>PWA - FZ Lista de Tarefas</title>
+
 	<script type="text/javascript">
-        if ("serviceWorker" in navigator) {
-            navigator.serviceWorker.register("sw.js").then(function(registration) {
-                console.info("Service Worker registration successful with scope: ", registration.scope);
-            }).catch(function(err) {
-                console.error("Service Worker registration failed: ", err);
-            });
-        }
-    </script>
+		if ("serviceWorker" in navigator) {
+			navigator.serviceWorker.register("sw.js").then(function (registration) {
+				console.info("Service Worker registration successful with scope: ", registration.scope);
+			}).catch(function (err) {
+				console.error("Service Worker registration failed: ", err);
+			});
+		}
+	</script>
 
 </head>
 
 <body>
-	<div class="header py-4 mb-4">
+
+	<header class="header py-4 mb-4">
 		<h1 class="text-center"> <span class="simbol">
 				<</span> Lista de Tarefas <span class="simbol">/>
 			</span>
 		</h1>
-	</div>
+	</header>
 
 	<div class="container">
 		<div id="app">
 			<label class="lblCadastrar" for="novaTarefa">Digite o nome da sua tarefa:</label>
+
 			<div class="input-group mb-3">
 				<input id="novaTarefa" type="text" maxlength="38" class="form-control" placeholder="ex: passear com o cachorro..">
 				<div class="input-group-append">
-					<input type="color" id="inputTodoColor" name="inputTodoColor" value="#ff0000">
-					<button class="btnPLUS btn btn-success btn-lg" type="submit"><span class="btnPLUS-text">+</span></button>
-				
+					<button class="btnPLUS btn btn-success btn-lg" onclick="addTodo()"><span class="btnPLUS-text">+</span></button>
 				</div>
 			</div>
 
-			<ul class="my-4 list-group">
-				<!-- ONDE AS ATIVIDADES SERAO RENDERIZADAS -->
+			<ul id="render" class="my-4 list-group">
 			</ul>
-		</div>
-	</div>
 
 
-
-	<footer class="footer container mt-3 text-center">
-		<span class="text-muted">Desenvolvido por <a class="linkSite" href="https://fziliotti.github.io/Fziliotti/">Fabrício
-				Fernandes
-				Ziliotti</a> =)
-		</span>
-		<div class="btn-group" role="group" aria-label="Basic example">
-			<button id="toggleTema" onclick="mudarTema()" class="btn btn-light btn-sm">Mudar-Tema</button>
-			<button type="button" onclick="cronometroFade()" class="btn btn-warning  ">Cronometro</button>
-		</div>
-	</footer>
+			<!-- <ul style="height: 500px; background-color: #f1f1f1;" ondrop="drop(event)" ondragover="allowDrop(event)" id="render2"
+			 class="my-4 list-group">
+			</ul> -->
 
 
-	<div class="container d-flex ">
-		<div id="boxCronometro" class="containerTimer esconder mx-auto mt-4">
-			<h1 class="text-center" data-chronometer>00:00:00</h1>
-			<button class="btn btn-success" id="play">Começar</button>
-			<button class="btn btn-secondary" id="pause">Pausar</button>
-			<button class="btn btn-danger" id="reset">Resetar</button>
-		</div>
-	</div>
+			<footer class="footer mt-3">
+				<span class="text-muted">Desenvolvido por <a class="linkSite" href="https://fziliotti.github.io/Fziliotti/">Fabrício
+						Fernandes
+						Ziliotti</a> =)
+				</span>
+				<div class="btn-group" role="group" aria-label="Basic example">
+					<button id="toggleTema" onclick="mudarTema()" class="btn btn-light btn-sm">Mudar-Tema</button>
+					<button type="button" onclick="cronometroFade()" class="btn btn-warning  ">Cronometro</button>
+					<button type="button" onclick="mostrarConcluidas()" class="btn btn-secondary  ">Concluídas</button>
+				</div>
+			</footer>
 
-	<script>
-		var boxCronometro = document.getElementById('boxCronometro');
-		function cronometroFade() {
-			boxCronometro.classList.toggle('esconder');
-		}
-	</script>
-	<script src="js/toDo.js"></script>
-	<script src="js/cronometro.js"></script>
-	<script src="js/sweetalert2.js"></script>
+
+			<div class="container d-flex ">
+				<div id="boxCronometro" class="containerTimer esconder mx-auto mt-4">
+					<h1 class="text-center" data-chronometer>00:00:00</h1>
+					<button class="btn btn-success" id="play">Começar</button>
+					<button class="btn btn-secondary" id="pause">Pausar</button>
+					<button class="btn btn-danger" id="reset">Resetar</button>
+				</div>
+			</div>
+
+
+			<script src="js/toDo.js"></script>
+			<script src="js/pomodoro.js"></script>
+			<script src="js/temas.js"></script>
+			<script src="js/cronometro.js"></script>
+			<script src="js/sweetalert2.js"></script>
+
+		
 </body>
 
 </html>
