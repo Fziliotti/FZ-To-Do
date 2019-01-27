@@ -1,9 +1,10 @@
-var versao = 20
+var versao = 21
 var arquivos = [
     "css/main.css",
     "css/bootstrap4.css",
     "css/sweetalert.css",
     "js/sweetalert2.js",
+    "js/cronometro.js",
     "offline/index.html"
 ]
 
@@ -29,7 +30,6 @@ self.addEventListener("activate", function () {
 self.addEventListener("fetch", function (event) {
 
     let pedido = event.request
-
     event.respondWith(
         caches.match(pedido)
         .then(respostaCache => {
