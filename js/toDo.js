@@ -26,6 +26,17 @@ function renderTodos() {
 	}
 }
 
+
+// LISTENERS
+inputElement.addEventListener('keyup', function (e) {
+	var key = e.which || e.keyCode;
+	if (key == 13) {
+		addTodo();
+	}
+});
+
+
+
 function addTodo() {
 	var todoText = inputElement.value;
 	if (todoText.trim()) {
@@ -134,13 +145,6 @@ function deleteTodo(pos) {
 }
 
 
-// LISTENERS
-inputElement.addEventListener('keyup', function (e) {
-	var key = e.which || e.keyCode;
-	if (key == 13) {
-		addTodo();
-	}
-});
 
 function mostrarConcluidas() {
 	Swal.fire({
@@ -166,7 +170,7 @@ var htmlFormatado = () => {
 		}
 	})
 	texto += "</ol>"
-	return texto ? texto : 'Nenhuma tarefa concluída!';
+	return texto !== '<ol></ol>' ? texto : 'Nenhuma tarefa concluída!';
 }
 
 // Ja renderizar as tarefas quando esse arquivo for processado
