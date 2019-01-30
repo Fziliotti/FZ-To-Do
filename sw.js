@@ -5,6 +5,7 @@ var arquivos = [
     "css/sweetalert.css",
     "js/sweetalert2.js",
     "js/cronometro.js",
+    "js/dragndrop.js",
     "offline/index.html"
 ]
 

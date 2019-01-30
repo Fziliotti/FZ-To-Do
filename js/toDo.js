@@ -3,6 +3,7 @@ var inputElement = document.querySelector('#app input');
 var btnElement = document.querySelector('#app button');
 var todos = JSON.parse(localStorage.getItem('lista_tarefas')) || [];
 var render = document.querySelector('#render');
+const draggableList = new DraggableList(render);
 
 function saveToStorage() {
 	localStorage.setItem('lista_tarefas', JSON.stringify(todos));
