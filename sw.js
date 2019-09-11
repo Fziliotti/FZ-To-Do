@@ -1,11 +1,14 @@
-var versao = 21
+var versao = 3
 var arquivos = [
+    "index.html",
+    "./css/fontawesome.css",
     "css/main.css",
     "css/bootstrap4.css",
     "css/sweetalert.css",
     "js/sweetalert2.js",
     "js/cronometro.js",
     "js/dragndrop.js",
+    "js/toDo.js",
     "offline/index.html"
 ]
 

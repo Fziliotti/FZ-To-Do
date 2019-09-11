@@ -145,6 +145,7 @@ class DraggableList {
         // Resetando
         if(this._closest)
             this._closest.style.marginBottom = null;
+            
         this.elemento.style.paddingTop = null;
         this._itemAtivo.style.position = null;
         this._itemAtivo.style.zIndex   = null;
