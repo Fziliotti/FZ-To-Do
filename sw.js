@@ -1,4 +1,4 @@
-var versao = 10
+var versao = 20
 var arquivos = [
     "index.html",
     "./css/fontawesome.css",
@@ -45,22 +45,21 @@ self.addEventListener("fetch", function (event) {
 
 
 self.addEventListener('notificationclose', function(e) {
-var notification = e.notification;
-var primaryKey = notification.data.primaryKey;
-
-console.log('Closed notification: ' + primaryKey);
+    var notification = e.notification;
+    var primaryKey = notification.data.primaryKey;
+    console.log('Closed notification: ' + primaryKey);
 });
 
 
 self.addEventListener('notificationclick', function(e) {
-var notification = e.notification;
-var primaryKey = notification.data.primaryKey;
-var action = e.action;
+    var notification = e.notification;
+    var primaryKey = notification.data.primaryKey;
+    var action = e.action;
 
-if (action === 'close') {
-    notification.close();
-} else {
-    clients.openWindow('http://www.example.com');
-    notification.close();
-}
+    if (action === 'close') {
+        notification.close();
+    } else {
+        clients.openWindow('http://www.example.com');
+        notification.close();
+    }
 });
