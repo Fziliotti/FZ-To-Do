@@ -30,14 +30,7 @@
 	</script>
 
 
-<style>
-.add-button {
-  position: absolute;
-  top: 1px;
-  left: 1px;
-}
-	
-</style>
+
 </head>
 
 <body>
@@ -76,8 +69,9 @@
 				</span>
 				<div class="btn-group" role="group" aria-label="Basic example">
 					<button id="toggleTema" onclick="mudarTema()" class="btn btn-light btn-sm">Mudar-Tema</button>
+					<button class="add-button btn btn-success">Install this APP</button>
 					<button type="button" onclick="cronometroFade()" class="btn btn-warning  ">Cronometro</button>
-					<button type="button" onclick="mostrarConcluidas()" class="btn btn-secondary  ">Concluídas</button>
+					<!-- <button type="button" onclick="mostrarConcluidas()" class="btn btn-secondary  ">Concluídas</button> -->
 				</div>
 			</footer>
 
@@ -93,11 +87,13 @@
 				</div>
 			</div>
 
-			<button class="add-button">Add to home screen</button>
+			<button onclick="displayNotification()">Enviar notificação</button>
+		
 	
 
 
 
+			<script src="js/notification.js"></script>
 			<script src="js/dragndrop.js"></script>
 			<script src="js/toDo.js"></script>
 			<script src="js/pomodoro.js"></script>
